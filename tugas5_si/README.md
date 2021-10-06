@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+Anggota Kelompok : 
+Raju Wahyudi Pratama
+Stefani Tasya Hallatu
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
