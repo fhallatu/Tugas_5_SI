@@ -11,8 +11,10 @@ class DaftarProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void edit(Daftar daftar, String nama) {
+  void edit(Daftar daftar, String nama, String harga, String tahun) {
     daftar.nama = nama;
+    daftar.harga = harga;
+    daftar.tahun = tahun;
     notifyListeners();
   }
 

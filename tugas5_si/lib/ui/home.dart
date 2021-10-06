@@ -21,6 +21,9 @@ class Home extends StatelessWidget {
               return ListTile(
                 title: Text(value.listDaftar[index].nama),
                 trailing: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red)),
                   onPressed: () {
                     value.hapus(value.listDaftar[index]);
                   },

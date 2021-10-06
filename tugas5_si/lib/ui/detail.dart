@@ -11,16 +11,20 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _nama = TextEditingController();
+  final TextEditingController _harga = TextEditingController();
+  final TextEditingController _tahun = TextEditingController();
   String _title = '';
   String _merk = '';
   @override
   void initState() {
     super.initState();
     if (widget.daftar != null) {
-      _controller.text = widget.daftar!.nama;
+      _nama.text = widget.daftar!.nama;
+      _harga.text = widget.daftar!.harga;
+      _tahun.text = widget.daftar!.tahun;
       _title = 'Ubah';
-      _merk = _controller.text;
+      _merk = _nama.text;
     } else {
       _title = 'Tambah';
       _merk = 'Tambah Data';
@@ -38,15 +42,28 @@ class _DetailState extends State<Detail> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           TextFormField(
-            controller: _controller,
+            decoration: const InputDecoration(labelText: 'Merk Handphone'),
+            controller: _nama,
+          ),
+          TextFormField(
+            decoration: const InputDecoration(labelText: 'Harga Handphone'),
+            controller: _harga,
+          ),
+          TextFormField(
+            decoration: const InputDecoration(labelText: 'Tahun '),
+            controller: _tahun,
           ),
           ElevatedButton(
               onPressed: () {
                 DaftarProvider provider = context.read<DaftarProvider>();
                 if (widget.daftar != null) {
-                  provider.edit(widget.daftar!, _controller.text);
+                  provider.edit(
+                      widget.daftar!, _nama.text, _harga.text, _tahun.text);
                 } else {
-                  provider.tambah(Daftar(nama: _controller.text));
+                  provider.tambah(Daftar(
+                      nama: _nama.text,
+                      harga: _harga.text,
+                      tahun: _tahun.text));
                 }
                 Navigator.pop(context);
               },

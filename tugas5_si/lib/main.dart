@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       providers: <SingleChildWidget>[
         ChangeNotifierProvider(create: (_) => DaftarProvider())
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         home: Home(),
       ),
     );
