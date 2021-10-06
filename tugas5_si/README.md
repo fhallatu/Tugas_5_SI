@@ -2,9 +2,9 @@
 
 A new Flutter project.
 
-Anggota Kelompok : 
-Raju Wahyudi Pratama
-Stefani Tasya Hallatu
+## Anggota Kelompok : 
+### Raju Wahyudi Pratama,
+### Stefani Tasya Hallatu
 
 ## Getting Started
 
