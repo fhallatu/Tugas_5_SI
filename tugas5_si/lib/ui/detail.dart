@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tugas5_si/Widget/appbar.dart';
+import 'package:tugas5_si/Widget/text_form_field.dart';
 import 'package:tugas5_si/provider/daftar_provider.dart';
 import '../models/daftar.dart';
 
@@ -34,26 +36,48 @@ class _DetailState extends State<Detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
+        backgroundcolor: Colors.purple,
         title: Text(_merk),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Merk Handphone'),
-            controller: _nama,
-          ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Harga Handphone'),
-            controller: _harga,
-          ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Tahun '),
-            controller: _tahun,
-          ),
-          ElevatedButton(
+      body: Container(
+        margin: const EdgeInsets.only(left: 15, right: 15, top: 15),
+        child: Column(
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+            ),
+            CustomTextFormField(
+              controller: _nama,
+              labelText: 'Merk Handphone',
+              hintText: 'ex : Samsung Galaxy A72',
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+            ),
+            CustomTextFormField(
+              controller: _harga,
+              labelText: 'Harga Handphone',
+              hintText: 'ex : 6999000',
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+            ),
+            CustomTextFormField(
+              controller: _tahun,
+              labelText: 'Tahun',
+              hintText: 'ex : 2021',
+            ),
+            ElevatedButton(
               onPressed: () {
                 DaftarProvider provider = context.read<DaftarProvider>();
                 if (widget.daftar != null) {
@@ -67,8 +91,16 @@ class _DetailState extends State<Detail> {
                 }
                 Navigator.pop(context);
               },
-              child: Text(_title))
-        ],
+              child: Text(
+                _title,
+                style: const TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.purple),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
